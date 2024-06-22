@@ -1,4 +1,8 @@
 FROM python:3.10-slim
+
+# Set the timezone
+ENV TZ=America/New_York
+
 # Set the working directory
 WORKDIR /backend
 
