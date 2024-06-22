@@ -44,17 +44,47 @@ class Button:
         return self.state
     
     def press(self) -> bool:
+        """
+        if 
+            pin is high, the debounce time has past and the button is not already pressed
+        then
+            change the buttons state
+            update the last pressed time
+        else if 
+            pin is low, the debounce time has past
+        then
+            change the button state and reset debounce time
+        finally return the button state
+
+        """
+
         if GPIO.input(self.pin) == GPIO.HIGH and (time.time() - self.last_press) >= self.debounce and not self.pressed:
             self.pressed = True
             self.last_press = time.time()
-            print(self.pressed)
-            return self.pressed
-        
-        if GPIO.input(self.pin) == GPIO.LOW and self.pressed:
+
+        elif GPIO.input(self.pin) == GPIO.LOW and (time.time() - self.last_press) >= self.debounce:
             self.pressed = False
-            print(self.pressed)
-            return self.pressed
+
+        return self.pressed
+
     
 
+    """
+    Method to test buttonpress
+    """
+    def test_press(self) -> bool:
+        button1 = Button(pin=14)
+        button1.init_button()
+
+        press = button1.press()
+        return press
+
+
+
+    """
+    Runs when file runs to test button methods
+    """
+    if __name__ == "__main__":
+        print(test_press())
 
 

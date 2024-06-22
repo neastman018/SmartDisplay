@@ -1,6 +1,6 @@
 FROM python:3.10-slim
 
-# Set the timezone
+# Set the timezone (for the pi's sake)
 ENV TZ=America/New_York
 
 # Set the working directory
