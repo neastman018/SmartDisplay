@@ -15,3 +15,8 @@ class Display:
         run("WAYLAND_DISPLAY='wayland-1' wlr-randr --output HDMI-A-1 --off", shell=True)
         self.state = False
         return False
+    
+
+if __name__ == "__main__":
+    display1 = Display()
+    display1.turn_off_display()
