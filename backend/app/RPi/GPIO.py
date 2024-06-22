@@ -29,3 +29,8 @@ def HIGH(value):
 def LOW(value):
     return 0
 
+def FALLING(value):
+    return 0
+
+def add_event_detect(value, value2, callback):
+    return 0
