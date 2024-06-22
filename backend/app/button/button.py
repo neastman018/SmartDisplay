@@ -66,7 +66,10 @@ class Button:
     Method to test button switch
     """
     def test_switch(self) -> bool:
-        switch = self.switch()
+        switch = self.state
+        if (self.switch() != switch):
+            switch = self.state
+            print(self.state)
         return switch
 
 
@@ -81,6 +84,6 @@ if __name__ == "__main__":
     button1.init_button()
 
     while True:
-        print(button1.test_switch())
+        button1.test_switch()
 
 
