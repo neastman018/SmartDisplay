@@ -70,14 +70,16 @@ class Button:
     
 
     """
-    Method to test buttonpress
+    Method to test button press
     """
-    def test_press(self) -> bool:
+    def test_press() -> bool:
         button1 = Button(pin=14)
         button1.init_button()
 
         press = button1.press()
         return press
+    
+
 
 
 
