@@ -25,33 +25,28 @@ class Button:
     def init_button(self):
         GPIO.setup(self.pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
-    """
-    Method that will return a true false based on the state of the button press
-    Button will act like a switch
-
-    """ 
-    def switch(self) -> bool:
-        if GPIO.input(self.pin) == GPIO.HIGH and (time.time() - self.last_press) >= self.debounce and not self.pressed:
-            self.pressed = True
-            self.last_press = time.time()
-            self.state = not self.state
-
-        if GPIO.input(self.pin) == GPIO.LOW and (time.time() - self.last_press) >= self.debounce:
-            self.pressed = False
-
-        return self.state
-    
-
 
     def press(self) -> bool:
         if GPIO.input(self.pin) == GPIO.HIGH and (time.time() - self.last_press) >= self.debounce and not self.pressed:
             self.pressed = True
             self.last_press = time.time()
 
-        elif GPIO.input(self.pin) == GPIO.LOW and (time.time() - self.last_press) >= self.debounce:
+        elif GPIO.input(self.pin) == GPIO.LOW and (time.time() - self.last_press) >= self.debounce and self.pressed:
             self.pressed = False
 
         return self.pressed
+
+    """
+    Method that will return a true false based on the state of the button press
+    Button will act like a switch
+
+    """ 
+    def switch(self) -> bool:
+        if self.press():
+            self.state = not self.state
+
+        return self.state
+    
 
 
 
