@@ -42,11 +42,15 @@ class Button:
 
     """ 
     def switch(self) -> bool:
-        if self.press():
+        if GPIO.input(self.pin) == GPIO.HIGH and (time.time() - self.last_press) >= self.debounce and not self.pressed:
+            self.pressed = True
+            self.last_press = time.time()
             self.state = not self.state
 
-        return self.state
-    
+        elif GPIO.input(self.pin) == GPIO.LOW and (time.time() - self.last_press) >= self.debounce and self.pressed:
+            self.pressed = False
+
+        return self.pressed
 
 
 
@@ -78,6 +82,6 @@ if __name__ == "__main__":
     button1.init_button()
 
     while True:
-        button1.test_press()
+        button1.test_switch()
 
 
