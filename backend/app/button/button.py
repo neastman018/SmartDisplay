@@ -55,29 +55,19 @@ class Button:
 
 
 
-"""
-Method to test button press
-"""
-def test_press() -> bool:
-    GPIO.setwarnings(False)
-    GPIO.setmode(GPIO.BCM)
-    button1 = Button(pin=14)
-    button1.init_button()
+    """
+    Method to test button press
+    """
+    def test_press(self) -> bool:
+        press = self.press()
+        return press
 
-    press = button1.press()
-    return press
-
-"""
-Method to test button switch
-"""
-def test_switch() -> bool:
-    GPIO.setwarnings(False)
-    GPIO.setmode(GPIO.BCM)
-    button1 = Button(pin=14)
-    button1.init_button()
-
-    switch = button1.switch()
-    return switch
+    """
+    Method to test button switch
+    """
+    def test_switch(self) -> bool:
+        switch = self.switch()
+        return switch
 
 
 
@@ -85,7 +75,12 @@ def test_switch() -> bool:
 Runs when file runs to test button methods
 """
 if __name__ == "__main__":
+    GPIO.setwarnings(False)
+    GPIO.setmode(GPIO.BCM)
+    button1 = Button(pin=14)
+    button1.init_button()
+
     while True:
-        print(test_switch())
+        print(button1.test_switch())
 
 
