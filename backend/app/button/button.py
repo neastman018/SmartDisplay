@@ -54,8 +54,7 @@ class Button:
     Method to test button press
     """
     def test_press(self) -> bool:
-        press = self.press()
-        return press
+        print(self.press())
 
     """
     Method to test button switch
@@ -79,6 +78,6 @@ if __name__ == "__main__":
     button1.init_button()
 
     while True:
-        button1.test_switch()
+        button1.test_press()
 
 
