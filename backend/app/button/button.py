@@ -50,7 +50,7 @@ class Button:
         elif GPIO.input(self.pin) == GPIO.LOW and (time.time() - self.last_press) >= self.debounce and self.pressed:
             self.pressed = False
 
-        return self.pressed
+        return self.state
 
 
 
@@ -64,11 +64,7 @@ class Button:
     Method to test button switch
     """
     def test_switch(self) -> bool:
-        switch = self.state
-        if (self.switch() != switch):
-            switch = self.state
-            print(self.state)
-        return switch
+        print(self.switch())
 
 
 
