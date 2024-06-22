@@ -67,26 +67,26 @@ class Button:
 
         return self.pressed
 
-    
 
-    """
-    Method to test button press
-    """
-    def test_press() -> bool:
-        button1 = Button(pin=14)
-        button1.init_button()
 
-        press = button1.press()
-        return press
-    
+"""
+Method to test button press
+"""
+def test_press() -> bool:
+    button1 = Button(pin=14)
+    button1.init_button()
 
+    press = button1.press()
+    return press
 
 
 
-    """
-    Runs when file runs to test button methods
-    """
-    if __name__ == "__main__":
-        print(test_press())
+
+
+"""
+Runs when file runs to test button methods
+"""
+if __name__ == "__main__":
+    print(test_press())
 
 
