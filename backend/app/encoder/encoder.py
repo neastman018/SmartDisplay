@@ -13,7 +13,9 @@ GPIO.setup(21, GPIO.IN)
 
 encoder = Encoder.Encoder(20, 21)
 
-while True:
-    print(encoder.read())
-    sleep(0.1)
+
+if __name__ == "__main__":
+    while True:
+        print(encoder.read())
+        sleep(0.1)
 
