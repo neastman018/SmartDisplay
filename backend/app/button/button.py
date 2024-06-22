@@ -73,6 +73,8 @@ class Button:
 Method to test button press
 """
 def test_press() -> bool:
+    GPIO.setwarnings(False)
+    GPIO.setmode(GPIO.BCM)
     button1 = Button(pin=14)
     button1.init_button()
 
