@@ -13,3 +13,6 @@ RUN poetry install
 
 # Want to copy this last so it only changes 
 COPY ./app ./app
+
+# Run the application
+CMD ["poetry", "run", "python", "app/testRun.py"]
