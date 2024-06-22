@@ -19,4 +19,4 @@ RUN poetry install
 COPY ./app ./app
 
 # Run the application
-CMD ["poetry", "run", "python", "app/testRun.py"]
+CMD ["poetry", "run", "python", "app/encoder/encoder.py"]
