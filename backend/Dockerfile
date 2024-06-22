@@ -7,8 +7,6 @@ ENV TZ=America/New_York
 WORKDIR /backend
 
 RUN pip install poetry==1.6.1
-RUN pip install RPi.GPIO
-
 
 # Copy the requirements file
 COPY  pyproject.toml poetry.lock ./
