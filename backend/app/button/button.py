@@ -89,6 +89,7 @@ def test_press() -> bool:
 Runs when file runs to test button methods
 """
 if __name__ == "__main__":
-    print(test_press())
+    while True:
+        print(test_press())
 
 
