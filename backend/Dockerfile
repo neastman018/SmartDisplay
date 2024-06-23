@@ -3,6 +3,9 @@ FROM python:3.10-slim
 # Set the timezone (for the pi's sake)
 ENV TZ=America/New_York
 
+# Install RPi.GPIO
+RUN pip install RPi.GPIO
+
 # Set the working directory
 WORKDIR /backend
 
