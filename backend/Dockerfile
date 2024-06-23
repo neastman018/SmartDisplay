@@ -4,14 +4,14 @@ FROM python:3.11.9-bookworm
 ENV TZ=America/New_York
 
 # Install build tools and dependencies
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    python3-dev \
-    && rm -rf /var/lib/apt/lists/*
+# RUN apt-get update && apt-get install -y \
+#     build-essential \
+#     python3-dev \
+#     && rm -rf /var/lib/apt/lists/*
 
 
-# Install RPi.GPIO
-RUN pip install RPi.GPIO
+# # Install RPi.GPIO
+# RUN pip install RPi.GPIO
 
 # Set the working directory
 WORKDIR /backend
@@ -28,4 +28,4 @@ RUN poetry install
 COPY ./app ./app
 
 # Run the application
-CMD ["poetry", "run", "python", "app/button/button.py"]
+CMD ["python", "app/button/button.py"]
