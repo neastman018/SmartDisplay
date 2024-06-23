@@ -1,4 +1,4 @@
-FROM python:3.10-slim
+FROM python:3.11.9-bookworm
 
 # Set the timezone (for the pi's sake)
 ENV TZ=America/New_York
@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y \
     python3-dev \
     && rm -rf /var/lib/apt/lists/*
 
-    
+
 # Install RPi.GPIO
 RUN pip install RPi.GPIO
 
