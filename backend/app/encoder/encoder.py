@@ -6,8 +6,8 @@ import Encoder
 from time import sleep
 import RPi.GPIO as GPIO
 
-
-GPIO.setMode(GPIO.BCM)
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BCM)
 GPIO.setup(20, GPIO.IN)
 GPIO.setup(21, GPIO.IN)
 
