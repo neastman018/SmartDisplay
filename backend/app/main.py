@@ -1,9 +1,10 @@
 from button.button import Button
 from display.display import Display
 import RPi.GPIO as GPIO
+import time
 
-PIN1= 5
-PIN2 = 6
+PIN1= 6
+PIN2 = 5
 
 display = Display()
 
@@ -19,9 +20,12 @@ while True:
     if button1.press() and display.state:
         print("Button 1 pressed: Display is turning off")
         display.turn_off_display()
+        time.sleep(0.5)
+
     elif button1.press() and not display.state:
         print("Button 1 pressed: Display is turning on")
         display.turn_on_display()
+        time.sleep(0.5)
     
 
     
