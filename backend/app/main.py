@@ -16,6 +16,8 @@ button2 = Button(PIN2)
 button1.init_button()
 button2.init_button()
 
+print("Running")
+
 while True:
     if button1.press() and display.state:
         print("Button 1 pressed: Display is turning off")
