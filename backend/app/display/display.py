@@ -8,6 +8,8 @@ class Display:
 
     def turn_on_display(self):
         run("WAYLAND_DISPLAY='wayland-1' wlr-randr --output HDMI-A-1 --on", shell=True)
+        run("WAYLAND_DISPLAY='wayland-1' wlr-randr --output HDMI-A-1 --transform 270", shell=True)
+
         self.state = True
         return True
 
