@@ -27,7 +27,7 @@ print("Running")
 while True:
 
     if not morning_alarm.is_active():
-        morning_alarm.activate(23, 41)
+        morning_alarm.activate(23, 48)
         display.turn_on_display()
 
 

@@ -23,9 +23,11 @@ Method to play the alarm
 
 class Alarm:
 
-    def __init__(self, alarm = pygame.mixer.music, last_played_min = 0):
+    def __init__(self, alarm = pygame.mixer.music, last_played_min=0):
         self.alarm = alarm
         pygame.mixer.init()
+        self.last_played_min = last_played_min
+
 
 
         
