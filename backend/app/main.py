@@ -3,6 +3,7 @@ from display.display import Display
 from alarm.alarm import Alarm
 import RPi.GPIO as GPIO
 import time
+import datetime
 
 PIN1= 6
 PIN2 = 5
@@ -22,11 +23,11 @@ button1.init_button()
 button2.init_button()
 
 print("Running")
-morning_alarm.play_alarm()
+#morning_alarm.play_alarm()
 while True:
 
     if morning_alarm.is_active():
-        morning_alarm.activate(23, 24)
+        morning_alarm.activate(datetime.now.hour(), datetime.now().minute)
 
     if button2.press() and morning_alarm.is_active() :
         morning_alarm.alarm_stop()

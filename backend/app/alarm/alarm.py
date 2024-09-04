@@ -53,7 +53,6 @@ class Alarm:
     """
     def activate(self, hour, minute) -> bool:
         now = datetime.now()
-
         if hour == now.hour and minute == now.minute and not self.is_active():
             print(self.is_active())
             self.alarm.play()
