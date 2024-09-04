@@ -27,7 +27,7 @@ print("Running")
 while True:
 
     if not morning_alarm.is_active():
-        morning_alarm.activate(datetime.now().hour, datetime.now().minute)
+        morning_alarm.activate(23, datetime.now().33)
 
     if button2.press() and morning_alarm.is_active() :
         morning_alarm.alarm_stop()
