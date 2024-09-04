@@ -27,9 +27,8 @@ print("Running")
 while True:
 
     if not morning_alarm.is_active():
-        morning_alarm.activate(23, 37)
-        if not display.state:
-            display.turn_on_display()
+        morning_alarm.activate(23, 41)
+        display.turn_on_display()
 
 
     if button2.press() and morning_alarm.is_active() :
