@@ -3,7 +3,7 @@ from display.display import Display
 from alarm.alarm import Alarm
 import RPi.GPIO as GPIO
 import time
-import datetime
+from datetime import datetime
 
 PIN1= 6
 PIN2 = 5
