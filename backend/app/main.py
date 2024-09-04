@@ -22,13 +22,16 @@ button1.init_button()
 button2.init_button()
 
 print("Running")
-
+morning_alarm.play_alarm()
 while True:
 
-    morning_alarm.activate(23, 24)
+    if morning_alarm.is_active():
+        morning_alarm.activate(23, 24)
 
-    if button2.press() and morning_alarm.is_active():
+    if button2.press() and morning_alarm.is_active() :
         morning_alarm.alarm_stop()
+        if not display.state:
+            display.turn_on_display()
 
     if button1.press() and display.state:
         print("Button 1 pressed: Display is turning off")
