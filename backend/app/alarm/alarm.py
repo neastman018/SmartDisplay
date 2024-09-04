@@ -57,6 +57,7 @@ class Alarm:
         if hour == now.hour and minute == now.minute and not self.is_active():
             print(self.is_active())
             self.alarm.play()
+            print("Alarm is playing")
     
     # Method to stop the alarm if active
     def alarm_stop(self)->bool:
