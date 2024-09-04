@@ -23,7 +23,7 @@ Method to play the alarm
 
 class Alarm:
 
-    def __init__(self, alarm = pygame.mixer.music):
+    def __init__(self, alarm = pygame.mixer.music, last_played_min = 0):
         self.alarm = alarm
         pygame.mixer.init()
 
@@ -53,9 +53,10 @@ class Alarm:
     """
     def activate(self, hour, minute) -> bool:
         now = datetime.now()
-        if hour == now.hour and minute == now.minute and not self.is_active() and now.second < 3:
+        if hour == now.hour and minute == now.minute and not self.is_active() and now.minute != self.last_played_min:
             print(self.is_active())
             self.alarm.play()
+            self.last_played_min = now.minute
             print("Alarm is playing")
     
     # Method to stop the alarm if active
