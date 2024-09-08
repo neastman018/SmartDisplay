@@ -1,3 +1,3 @@
-import os
+from subprocess import run
 
-os.run("cd frontend && npm run start", shell=True)
+run("cd frontend && npm run start", shell=True)
