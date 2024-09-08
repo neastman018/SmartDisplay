@@ -4,6 +4,7 @@ from alarm.alarm import Alarm
 import RPi.GPIO as GPIO
 import time
 from datetime import datetime
+from subprocess import run
 
 
 
@@ -24,6 +25,7 @@ button2 = Button(PIN2)
 button1.init_button()
 button2.init_button()
 
+run("WAYLAND_DISPLAY='wayland-1' wlr-randr --output HDMI-A-1 --transform 270", shell=True)
 print("Running")
 #morning_alarm.play_alarm()
 while True:
