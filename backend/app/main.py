@@ -5,13 +5,15 @@ import RPi.GPIO as GPIO
 import time
 from datetime import datetime
 
+
+
 PIN1= 6
 PIN2 = 5
 
 display = Display()
 
-morning_alarm = Alarm()
-morning_alarm.init("Good_MorningV2.mp3")
+# morning_alarm = Alarm()
+# morning_alarm.init("Good_MorningV2.mp3")
 
 
 GPIO.setwarnings(False)
@@ -26,13 +28,13 @@ print("Running")
 #morning_alarm.play_alarm()
 while True:
 
-    if not morning_alarm.is_active():
-        morning_alarm.activate(23, 48)
-        display.turn_on_display()
+    # if not morning_alarm.is_active():
+    #     morning_alarm.activate(23, 48)
+    #     display.turn_on_display()
 
 
-    if button2.press() and morning_alarm.is_active() :
-        morning_alarm.alarm_stop()
+    # if button2.press() and morning_alarm.is_active():
+    #     morning_alarm.alarm_stop()
 
     if button1.press() and display.state:
         print("Button 1 pressed: Display is turning off")
