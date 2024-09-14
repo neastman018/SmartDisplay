@@ -6,8 +6,15 @@ import time
 from datetime import datetime
 from subprocess import run
 from enum import Enum
+# import logging
+# import mylib
+# logger = logging.getLogger(__name__)
 
-
+# def main():
+#     logging.basicConfig(filename='myapp.log', level=logging.INFO)
+#     logger.info('Started')
+#     mylib.do_something()
+#     logger.info('Finished')
 
 PIN1= 6
 PIN2 = 5
@@ -22,6 +29,7 @@ class States(Enum):
 
 display = Display()
 state = States.DEFAULT
+run("WAYLAND_DISPLAY='wayland-1' wlr-randr --output HDMI-A-1 --transform 270", shell=True)
 
 morning_alarm = Alarm()
 morning_alarm.init("Good_MorningV2.mp3")
@@ -35,7 +43,6 @@ button2 = Button(PIN2)
 button1.init_button()
 button2.init_button()
 
-run("WAYLAND_DISPLAY='wayland-1' wlr-randr --output HDMI-A-1 --transform 270", shell=True)
 print("Running")
 #morning_alarm.play_alarm()
 while True:

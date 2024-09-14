@@ -34,7 +34,7 @@ class Alarm:
 
 
     def init(self, alarm_sound):
-        self.alarm.load("alarm/music/" + alarm_sound)
+        self.alarm.load("backend/app/alarm/music/" + alarm_sound)
 
         print(f"Alarm playing {alarm_sound} is ready")
     
