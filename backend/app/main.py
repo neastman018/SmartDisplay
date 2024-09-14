@@ -52,19 +52,19 @@ while True:
         # screen and leds on are on alarm is not playing
         case States.DEFAULT:
             if button1.press(): # display and leds turn off
-                states = States.SLEEP
-                print(f"Button 1 pressed: Display is turning off: state is {states}")
+                state = States.SLEEP
+                print(f"Button 1 pressed: Display is turning off: state is {state}")
                 display.turn_off_display()
                 time.sleep(0.5)
 
             elif morning_alarm.is_active():
-                states = States.ALARM
+                state = States.ALARM
                 print("Alarm is playing")
                 time.sleep(0.5)
 
         # screen and leds are off       
         case States.SLEEP:
-            if states == States.SLEEP:
+            if state == States.SLEEP:
                 print("Sleep State")
             if button1.press():
                 states = States.DEFAULT
@@ -81,7 +81,7 @@ while True:
 
             if button2.press():
                 morning_alarm.alarm_stop()
-                states = States.DEFAULT
+                state = States.DEFAULT
                 print("Alarm stopped")
                 time.sleep(0.5)
             
