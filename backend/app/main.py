@@ -39,7 +39,7 @@ run("WAYLAND_DISPLAY='wayland-1' wlr-randr --output HDMI-A-1 --transform 270", s
 print("Running")
 #morning_alarm.play_alarm()
 while True:
-    morning_alarm.activate(8, 39)
+    morning_alarm.activate(8, 43)
 
     match state:
         # screen and leds on are on alarm is not playing
