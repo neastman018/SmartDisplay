@@ -53,7 +53,7 @@ while True:
         case States.DEFAULT:
             if button1.press(): # display and leds turn off
                 states = States.SLEEP
-                print("Button 1 pressed: Display is turning off")
+                print(f"Button 1 pressed: Display is turning off: state is {states}")
                 display.turn_off_display()
                 time.sleep(0.5)
 
@@ -64,6 +64,8 @@ while True:
 
         # screen and leds are off       
         case States.SLEEP:
+            if states == States.SLEEP:
+                print("Sleep State")
             if button1.press():
                 states = States.DEFAULT
                 print("Button 1 pressed: Display is turning on")
