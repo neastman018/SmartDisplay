@@ -46,7 +46,7 @@ button2.init_button()
 print("Running")
 #morning_alarm.play_alarm()
 while True:
-    morning_alarm.activate(19, 8)
+    morning_alarm.activate(19, 17)
     print("State is", state)
 
     match state:
