@@ -46,7 +46,7 @@ button2.init_button()
 print("Running")
 #morning_alarm.play_alarm()
 while True:
-    morning_alarm.activate(8, 43)
+    morning_alarm.activate(9, 16)
 
     match state:
         # screen and leds on are on alarm is not playing
