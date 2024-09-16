@@ -1,10 +1,10 @@
 """
 Methods for setting and activating an alarm
 """
-import multiprocessing
+
 import pygame
-from datetime import datetime 
-import string
+from datetime import datetime
+from logs.logs import log
 
 """
 Function to inteperate time 
@@ -37,6 +37,7 @@ class Alarm:
         self.alarm.load("backend/app/alarm/music/" + alarm_sound)
 
         print(f"Alarm playing {alarm_sound} is ready")
+        log(f"Alarm playing {alarm_sound} is ready")
     
     """
     Getter Method for the alarm being active
@@ -59,19 +60,21 @@ class Alarm:
             print(self.is_active())
             self.alarm.play()
             self.last_played_min = now.minute
-            print("Alarm is playing")
+            log(f"Alarm played at {now.hour}:{now.minute}")
     
     # Method to stop the alarm if active
     def alarm_stop(self)->bool:
         if self.is_active():
             self.alarm.stop()
+            log("Alarm stopped")
 
 if __name__ == "__main__":
     alarm  = Alarm()
     alarm.init("Good_MorningV2.mp3")
-    alarm.play_alarm()
-    while alarm.is_active():
-        continue
+    
+    while 1:
+        alarm.activate(19, 2)
+        
 
 
 

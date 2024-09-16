@@ -9,6 +9,7 @@ readme = "README.md"
 python = "^3.10"
 datetime = "^5.5"
 encoder = "^1.1"
+mylib = "^0.0.1"
 
 
 [build-system]

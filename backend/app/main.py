@@ -6,15 +6,7 @@ import time
 from datetime import datetime
 from subprocess import run
 from enum import Enum
-# import logging
-# import mylib
-# logger = logging.getLogger(__name__)
-
-# def main():
-#     logging.basicConfig(filename='myapp.log', level=logging.INFO)
-#     logger.info('Started')
-#     mylib.do_something()
-#     logger.info('Finished')
+from logs.logs import log
 
 PIN1= 6
 PIN2 = 5
@@ -24,7 +16,6 @@ class States(Enum):
     SLEEP = 1
     WAKE = 2
     ALARM = 3
-    
 
 
 display = Display()
@@ -44,33 +35,38 @@ button1.init_button()
 button2.init_button()
 
 print("Running")
-#morning_alarm.play_alarm()
+log("Backend has started")
 while True:
-    morning_alarm.activate(7, 30)
-    print("State is", state)
-
+    morning_alarm.activate(7, 25)
+    
     match state:
         # screen and leds on are on alarm is not playing
         case States.DEFAULT:
             if button1.press(): # display and leds turn off
                 state = States.SLEEP
                 print(f"Button 1 pressed: Display is turning off: state is {state}")
+                log(f"Button 1 pressed: Display is turning off: state is {state}")
                 display.turn_off_display()
                 time.sleep(0.5)
 
             elif morning_alarm.is_active():
                 state = States.ALARM
-                print("Alarm is playing")
+                log(f"Should switch to State.ALARM and Switching to {state}")
                 time.sleep(0.5)
 
         # screen and leds are off       
         case States.SLEEP:
-            if state == States.SLEEP:
-                print("Sleep State")
             if button1.press():
                 states = States.DEFAULT
                 print("Button 1 pressed: Display is turning on")
+                log(f"Button 1 pressed: Display is turning on: state is {state}")
+               
                 display.turn_on_display()
+                time.sleep(0.5)
+            
+            elif morning_alarm.is_active():
+                state = States.ALARM
+                log(f"Should switch to State.ALARM and Switching to {state}")
                 time.sleep(0.5)
             
             
@@ -84,22 +80,8 @@ while True:
                 morning_alarm.alarm_stop()
                 state = States.DEFAULT
                 print("Alarm stopped")
+                log(f"Button 2 pressed: Alarm stopped. Switching to {state}")
                 time.sleep(0.5)
             
 
-    # if button1.press() and display.state:
-    #     print("Button 1 pressed: Display is turning off")
-    #     display.turn_off_display()
-    #     time.sleep(0.5)
-
-    # elif button1.press() and not display.state:
-    #     print("Button 1 pressed: Display is turning on")
-    #     display.turn_on_display()
-    #     time.sleep(0.5)
-
-
-    
-    
-
-    
 

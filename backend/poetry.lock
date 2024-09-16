@@ -27,6 +27,16 @@ files = [
 ]
 
 [[package]]
+name = "mylib"
+version = "0.0.1"
+description = "just a simple test"
+optional = false
+python-versions = "*"
+files = [
+    {file = "mylib-0.0.1.tar.gz", hash = "sha256:0e4f96f4800500ad3a7c9e7cbfe44c36e8535a5360b6fe55478e5e677060824f"},
+]
+
+[[package]]
 name = "pytz"
 version = "2024.1"
 description = "World timezone definitions, modern and historical"
@@ -108,4 +118,4 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "e2293f529ac293291ee0eab709e1627ebf9ecf2de289b604a7e4c6c89552582c"
+content-hash = "575b374413f52b72945fc30770426fcc2b2b78eb4d08ea0a96d766081ed276b4"
