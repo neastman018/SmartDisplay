@@ -4,7 +4,7 @@ services:
     privileged: true 
     command: npm run start
     environment:
-     - DISPLAY=${DISPLAY}
+     - DISPLAY=:0
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix  # Allow access to X11 socket
       - .:/app  # Mount your application directory (adjust as needed)
