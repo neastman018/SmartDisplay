@@ -1,0 +1,12 @@
+services: 
+  frontend:
+    build: ./frontend
+    privileged: true 
+    command: npm run start
+    environment:
+     - DISPLAY=$DISPLAY
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix  # Allow access to X11 socket
+      - .:/app  # Mount your application directory (adjust as needed)
+    network_mode: host  # Optional: allows for simpler networking
+    # You may need to add extra options depending on your setup
