@@ -1,0 +1,4 @@
+services: 
+  frontend:
+    build: ./frontend
+    command: npm run start
