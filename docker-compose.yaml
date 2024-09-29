@@ -15,6 +15,7 @@ services:
     build: ./backend
     command: python app/main.py
     volumes:
+      - .:/app  # Mount your application directory (adjust as needed)
       - /dev/gpiomem:/dev/gpiomem   # Allow access to GPIO
     privileged: true  # Add this line
 
