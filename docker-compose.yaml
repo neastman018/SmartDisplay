@@ -28,51 +28,8 @@ services:
     command: python app/main.py
     network_mode: host  # Optional: allows for simpler networking
     # You may need to add extra options depending on your setup
-
-To fix and improve the docker-compose.yml configuration, I would suggest making a few changes based on best practices and common issues. Here's the revised version:
-
-Changes:
-Environment Variable Substitution: The $DISPLAY variable in Docker Compose should be passed correctly. If it's not working, try using ${DISPLAY} syntax instead.
-Mounting X11 and Wayland Sockets: Both X11 and Wayland sockets can be used for graphical applications, but the way they are mounted must be consistent.
-Volume Bindings: Make sure the directories are properly bound to avoid permission issues.
-Device Bindings: Ensure the correct devices are exposed for GPU access and hardware control.
-Updated docker-compose.yml
-yaml
-Copy code
-services: 
-  frontend:
-    build: ./frontend
-    privileged: true 
-    command: npm run start
-    environment:
-     - DISPLAY=${DISPLAY}  # Pass the display variable correctly
-    volumes:
-      - /tmp/.X11-unix:/tmp/.X11-unix  # Allow access to X11 socket for graphical applications
-      - .:/app  # Mount your application directory (adjust as needed)
-    devices:
-      - /dev/dri:/dev/dri  # Allow access to GPU
-    network_mode: host  # Optional: allows for simpler networking
-    extra_hosts:  # Allow frontend to use the host's hostname resolution
-      - "host.docker.internal:host-gateway"
-    # Add any other options required for your setup
-
-  backend:
-    build: ./backend
-    volumes:
-      - .:/app  # Mount your application directory (adjust as needed)
-      - /dev/gpiomem:/dev/gpiomem  # Allow access to GPIO for Raspberry Pi
-      - /tmp/.X11-unix:/tmp/.X11-unix  # Allow access to X11 socket for graphical applications
-      - /run/user/1000/wayland-0:/run/user/1000/wayland-0  # Allow access to Wayland socket if needed
-    devices:
-      - /dev/dri:/dev/dri  # Allow access to GPU for rendering
-      - /dev/vcsm:/dev/vcsm  # Allow access to VideoCore Shared Memory for Raspberry Pi
-    privileged: true  # Run in privileged mode to access hardware
-    command: python app/main.py  # The command to run your backend
-    environment:
-      - DISPLAY=${DISPLAY}  # Ensure the backend also has access to display if required
-    network_mode: host  # Optional: allows for simpler networking
     extra_hosts:  # Allow backend to use the host's hostname resolution
-      - "host.docker.internal:host-gateway"
+      - "host.docker.internal:host-gateway"  
 
 
 
