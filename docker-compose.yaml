@@ -20,6 +20,7 @@ services:
       - /run/user/1000/wayland-0:/run/user/1000/wayland-0  # Allow access to Wayland socket
     environment:
      - DISPLAY=$DISPLAY # Tell backend which display we are using
+     - PYTHONUNBUFFERED=1  # Optional: disable output buffering
     devices:
       - /dev/dri:/dev/dri  # Allow access to GPU
       - /dev/vcsm:/dev/vcsm  # Allow access to VideoCore Shared Memory
