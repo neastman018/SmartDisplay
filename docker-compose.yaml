@@ -18,6 +18,8 @@ services:
       - /dev/gpiomem:/dev/gpiomem   # Allow access to GPIO
       - /tmp/.X11-unix:/tmp/.X11-unix  # Allow access to X11 socket
       - /run/user/1000/wayland-0:/run/user/1000/wayland-0  # Allow access to Wayland socket
+    environment:
+     - DISPLAY=$DISPLAY # Tell backend which display we are using
     devices:
       - /dev/dri:/dev/dri  # Allow access to GPU
       - /dev/vcsm:/dev/vcsm  # Allow access to VideoCore Shared Memory
