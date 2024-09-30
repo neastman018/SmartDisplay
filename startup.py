@@ -1,3 +1,6 @@
+"""
+Pretty Sure this is not needed anymore, replaced wiht docker-compose.yaml
+"""
 from subprocess import run
 from threading import Thread
 from datetime import datetime
@@ -12,7 +15,7 @@ if __name__ == "__main__":
         file.write("This file was created at " + current_time + "\n")
 
     t1 = Thread(target=run_script, args=("python backend/app/main.py",))
-    t2 = Thread(target=run_script, args=("cd frontend && npm run start",))
+    t2 = Thread(target=run_script, args=("docker compose up",))
 
     t1.start()
     t2.start()
