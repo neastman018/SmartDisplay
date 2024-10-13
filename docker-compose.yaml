@@ -10,6 +10,7 @@ services:
       - .:/app  # Mount your application directory (adjust as needed)
     network_mode: host  # Optional: allows for simpler networking
     # You may need to add extra options depending on your setup
+    restart: always  # Optional: restart container on failure
 
   # backend:
   #   build: ./backend
