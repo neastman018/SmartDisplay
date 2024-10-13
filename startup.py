@@ -13,15 +13,14 @@ if __name__ == "__main__":
     with open(f"{current_time}.txt", "w") as file:
         file.write("This file was created at " + current_time + "\n")
 
-    run("python backend/app/main.py", shell=True)
 
-    # t1 = Thread(target=run_script, args=("python backend/app/main.py",))
-    # t2 = Thread(target=run_script, args=("docker compose up",))
+    t1 = Thread(target=run_script, args=("python backend/app/main.py",))
+    t2 = Thread(target=run_script, args=("cd frontend && npm run start",))
 
-    # t1.start()
-    # t2.start()
-    # t1.join()
-    # t2.join()
+    t1.start()
+    t2.start()
+    t1.join()
+    t2.join()
 
 
 
