@@ -21,8 +21,8 @@ display = Display()
 state = States.DEFAULT
 run("WAYLAND_DISPLAY='wayland-1' wlr-randr --output HDMI-A-1 --transform 270", shell=True)
 
-#morning_alarm = Alarm()
-#morning_alarm.init("Good_MorningV2.mp3")
+morning_alarm = Alarm()
+morning_alarm.init("Good_MorningV2.mp3")
 
 
 GPIO.setwarnings(False)
@@ -35,8 +35,10 @@ button2.init_button()
 
 print("Running")
 log("Backend has started")
+
+morning_alarm.activate(9, 15)
+
 while True:
-    #morning_alarm.activate(7, 25)
     
     match state:
         # screen and leds on are on alarm is not playing
