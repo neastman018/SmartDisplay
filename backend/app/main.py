@@ -37,7 +37,7 @@ button2.init_button()
 print("Running")
 log("Backend has started")
 
-morning_alarm.activate(9, 15)
+morning_alarm.activate(9, 20)
 
 while True:
     
@@ -51,10 +51,10 @@ while True:
                 display.turn_off_display()
                 time.sleep(0.5)
 
-            # elif morning_alarm.is_active():
-            #     state = States.ALARM
-            #     log(f"Should switch to State.ALARM and Switching to {state}")
-            #     time.sleep(0.5)
+            elif morning_alarm.is_active():
+                state = States.ALARM
+                log(f"Should switch to State.ALARM and Switching to {state}")
+                time.sleep(0.5)
 
         # screen and leds are off       
         case States.SLEEP:
@@ -66,10 +66,11 @@ while True:
                 display.turn_on_display()
                 time.sleep(0.5)
             
-            # elif morning_alarm.is_active():
-            #     state = States.ALARM
-            #     log(f"Should switch to State.ALARM and Switching to {state}")
-            #     time.sleep(0.5)
+            elif morning_alarm.is_active():
+                state = States.ALARM
+                display.turn_on_display()
+                log(f"Should switch to State.ALARM and Switching to {state}")
+                time.sleep(0.5)
             
             
         case States.WAKE:
@@ -79,7 +80,7 @@ while True:
         case States.ALARM:
 
             if button2.press():
-                # morning_alarm.alarm_stop()
+                morning_alarm.alarm_stop()
                 state = States.DEFAULT
                 print("Alarm stopped")
                 log(f"Button 2 pressed: Alarm stopped. Switching to {state}")
