@@ -6,6 +6,7 @@ from datetime import datetime
 from subprocess import run
 from enum import Enum
 from logs.logs import log
+from alarm.alarm import Alarm
 
 PIN1= 6
 PIN2 = 5
