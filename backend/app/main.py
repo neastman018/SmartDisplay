@@ -37,9 +37,10 @@ button2.init_button()
 print("Running")
 log("Backend has started")
 
-morning_alarm.activate(9, 20)
 
 while True:
+    morning_alarm.activate(9, 20)
+
     
     match state:
         # screen and leds on are on alarm is not playing
