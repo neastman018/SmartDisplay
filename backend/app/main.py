@@ -39,7 +39,7 @@ log("Backend has started")
 
 
 while True:
-    morning_alarm.activate(9, 20)
+    morning_alarm.activate(9, 25)
 
     
     match state:
