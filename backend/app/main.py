@@ -17,6 +17,8 @@ class States(Enum):
     WAKE = 2
     ALARM = 3
 
+wake_up_times = ["7:30", "9:45", "6:15", "6:15", "6:15", "6:15", "7:30"]    
+
 
 display = Display()
 state = States.DEFAULT
@@ -39,7 +41,7 @@ log("Backend has started")
 
 
 while True:
-    morning_alarm.activate(9, 35)
+    morning_alarm.wake_up(wake_up_times)
 
     
     match state:
