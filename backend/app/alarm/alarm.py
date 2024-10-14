@@ -61,7 +61,21 @@ class Alarm:
             self.alarm.play()
             self.last_played_min = now.minute
             log(f"Alarm played at {now.hour}:{now.minute}")
+
+
+    def wake_up(self, times):
+
+        # get day of the week and change it so Sunday is 0 and Saturday is 6
+        day_of_week = datetime.now().weekday() + 1
+        if day_of_week is 7:
+            day_of_week = 0
     
+        wake_up_time = times[day_of_week]
+        wake_up_hour = int(wake_up_time.split(":")[0])
+        wake_up_minute = int(wake_up_time.split(":")[1])
+
+        self.activate(wake_up_hour, wake_up_minute)
+        
     # Method to stop the alarm if active
     def alarm_stop(self)->bool:
         if self.is_active():
