@@ -10,6 +10,7 @@ from alarm.alarm import Alarm
 
 PIN1= 6
 PIN2 = 5
+ROTARY_PIN = 4
 
 class States(Enum):
     DEFAULT = 0
