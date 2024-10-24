@@ -23,7 +23,7 @@ wake_up_times = ["7:30", "6:15", "6:15", "6:15", "6:15", "6:15", "7:30"]
 
 display = Display()
 state = States.DEFAULT
-run("WAYLAND_DISPLAY='wayland-1' wlr-randr --output HDMI-A-1 --transform 270", shell=True)
+
 
 morning_alarm = Alarm()
 morning_alarm.init("Good_MorningV2.mp3")
