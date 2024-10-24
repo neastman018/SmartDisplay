@@ -1,5 +1,6 @@
 import os
 import glob
+from datetime import datetime
 
 def log(text):
     # Get list of all txt files in the directory
@@ -18,7 +19,12 @@ def log(text):
     
     print(f"Text written to {latest_file}")
 
+
+def time_stamp() -> str:
+    return datetime.now().strftime("%m/%d--%H:%M")
+
+
 # Example usage:
 if __name__ == "__main__":
     text_to_write = "This is a new line."
-    log(text_to_write)
+    print(time_stamp())

@@ -8,6 +8,7 @@ from enum import Enum
 from logs.logs import log
 from alarm.alarm import Alarm
 
+#Test Comment, this can be delelted
 PIN1= 6
 PIN2 = 5
 ROTARY_PIN = 4
