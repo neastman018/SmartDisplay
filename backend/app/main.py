@@ -64,7 +64,7 @@ while True:
         # screen and leds are off       
         case States.SLEEP:
             if button1.press():
-                states = States.DEFAULT
+                state = States.DEFAULT
                 print("Button 1 pressed: Display is turning on")
                 log(f"Button 1 pressed: Display is turning on: state is {state}")
                
