@@ -4,95 +4,67 @@ Methods for setting and activating an alarm
 
 import pygame
 from datetime import datetime
-from logs.logs import log
-
-"""
-Function to inteperate time 
-"""
-#def interperate_time(time):
-
-"""
-Method to initalize the alarm
-@parameter alarm_sound: music file to play
-"""
-
-"""
-Method to play the alarm
-@param alarm: return of the init_alarm function which is a initalized alarm with a song loaded
-"""
+# from logs.logs import log
 
 class Alarm:
-
-    def __init__(self, alarm = pygame.mixer.music, last_played_min=0):
-        self.alarm = alarm
+    def __init__(self, last_played_min=0):
         pygame.mixer.init()
         self.last_played_min = last_played_min
-
-
-
-        
-
+        self.alarm_sound = None  # Store the file path of the alarm sound
 
     def init(self, alarm_sound):
-        self.alarm.load("backend/app/alarm/music/" + alarm_sound)
+        # Store the alarm sound file path
+        self.alarm_sound = "backend/app/alarm/music/" + alarm_sound
+        print(f"Alarm sound {alarm_sound} is ready")
+        # log(f"Alarm sound {alarm_sound} is ready")
 
-        print(f"Alarm playing {alarm_sound} is ready")
-        log(f"Alarm playing {alarm_sound} is ready")
-    
-    """
-    Getter Method for the alarm being active
-    @return true if alarm is playing and false if not
-    """
     def is_active(self) -> bool:
-        return self.alarm.get_busy()
-    
+        # Checks if the music is currently playing
+        return pygame.mixer.music.get_busy()
 
     def play_alarm(self):
-        self.alarm.play()
-        
-    """
-    Plays the alarm at a certain time
-    @param hour, minute is the time to play
-    """
+        if self.alarm_sound:
+            pygame.mixer.music.load(self.alarm_sound)
+            pygame.mixer.music.play()
+        else:
+            print("Alarm sound not initialized.")
+            # log("Attempted to play alarm without initializing sound.")
+
     def activate(self, hour, minute) -> bool:
         now = datetime.now()
-        if hour == now.hour and minute == now.minute and not self.is_active() and now.minute != self.last_played_min:
-            print(self.is_active())
-            self.alarm.play()
+        if (
+            hour == now.hour
+            and minute == now.minute
+            and not self.is_active()
+            and now.minute != self.last_played_min
+        ):
+            self.play_alarm()
             self.last_played_min = now.minute
-            log(f"Alarm played at {now.hour}:{now.minute}")
-
+            # log(f"Alarm played at {now.hour}:{now.minute}")
 
     def wake_up(self, times):
-
-        # get day of the week and change it so Sunday is 0 and Saturday is 6
+        # Get day of the week and adjust so Sunday is 0 and Saturday is 6
         day_of_week = datetime.now().weekday() + 1
-        if day_of_week is 7:
+        if day_of_week == 7:
             day_of_week = 0
-    
+
         wake_up_time = times[day_of_week]
         wake_up_hour = int(wake_up_time.split(":")[0])
         wake_up_minute = int(wake_up_time.split(":")[1])
 
         self.activate(wake_up_hour, wake_up_minute)
-        
-    # Method to stop the alarm if active
-    def alarm_stop(self)->bool:
+
+    def alarm_stop(self) -> bool:
         if self.is_active():
-            self.alarm.stop()
-            log("Alarm stopped")
+            pygame.mixer.music.stop()
+            # log("Alarm stopped")
 
 if __name__ == "__main__":
-    alarm  = Alarm()
-    alarm.init("Good_MorningV2.mp3")
+    alarm = Alarm()
+    alarm.init("Peaky_Blinders.mp3")
     
-    while 1:
-        alarm.activate(19, 2)
-        
+    while True:
+        if not alarm.is_active():
+            alarm.play_alarm()
 
-
-
-
-          
-           
     

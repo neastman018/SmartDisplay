@@ -19,7 +19,7 @@ class States(Enum):
     WAKE = 2
     ALARM = 3
 
-wake_up_times = ["7:30", "6:15", "6:15", "6:15", "6:15", "6:15", "7:30"]    
+wake_up_times = ["8:40", "6:15", "6:15", "6:15", "6:15", "6:15", "7:30"]    
 
 
 display = Display()
@@ -27,7 +27,7 @@ state = States.DEFAULT
 
 
 morning_alarm = Alarm()
-morning_alarm.init("Good_MorningV2.mp3")
+morning_alarm.init("Peaky_Blinders.mp3")
 
 
 GPIO.setwarnings(False)
