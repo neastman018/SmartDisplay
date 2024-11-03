@@ -22,19 +22,16 @@ class States(Enum):
 #================================================================================================
 
 def default_button1(display) -> States:
-    print(f"Button 1 pressed: Display is turning off: state is {States.SLEEP}")
     display.turn_off_display()
     time.sleep(0.5)
     return States.SLEEP
 
 def default_button2(alarm) -> States:
     alarm.play_alarm()
-    print(f"Button 2 pressed: Alarm is playing: state is {States.ALARM}")
     time.sleep(0.5)
     return States.ALARM
 
 def default_alarm() -> States:
-    print(f"Alarm is playing: state is {States.ALARM}")
     time.sleep(0.5)
     return States.ALARM
 
@@ -42,33 +39,34 @@ def default_alarm() -> States:
 #================================================================================================
 
 def sleep_button1(display) -> States:
-    print(f"Button 1 pressed: Display is turning on: state is {States.DEFAULT}")
     display.turn_on_display()
     time.sleep(0.5)
     return States.DEFAULT
 
 def sleep_button2(alarm) -> States:
-    print(f"Should switch to State.ALARM and Switching to {States.ALARM}")
     alarm.play_alarm()
     time.sleep(0.5)
     return States.ALARM
 
 def sleep_alarm() -> States:
-    print(f"Should switch to State.ALARM and Switching to {States.ALARM}")
     time.sleep(0.5)
     return States.ALARM
 
 #================================================================================================
 #================================================================================================
 
-def alarm_button1() -> States:
+def alarm_button1(display) -> States:
+    display.turn_off_display()
     return States.ALARM
 
 def alarm_button2(alarm) -> States:
-    print(f"Should switch to Default")
     alarm.stop_alarm()
     time.sleep(0.5)
-    return States.ALARM
+    return States.DEFAULT
+
+def alarm_alarm_end() -> States:
+    time.sleep(0.5)
+    return States.DEFAULT
 
 #================================================================================================
 #================================================================================================
