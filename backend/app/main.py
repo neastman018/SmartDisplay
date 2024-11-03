@@ -19,7 +19,7 @@ class States(Enum):
     WAKE = 2
     ALARM = 3
 
-wake_up_times = ["8:40", "6:15", "6:15", "6:15", "6:15", "6:15", "7:30"]    
+wake_up_times = ["7:30", "6:15", "6:15", "6:15", "6:15", "6:15", "23:28"]    
 
 
 display = Display()
