@@ -35,9 +35,11 @@ GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 button1 = Button(PIN1)
 button2 = Button(PIN2)
+encoder_button = Button(ROTARY_PIN)
 
 button1.init_button()
 button2.init_button()
+encoder_button.init_button()
 
 print("Running")
 log("Backend has started")
@@ -57,6 +59,9 @@ while True:
             if button2.press(): # play music
                 print("Button 2 Pressed: Music Turning On")
                 state = States(default_button2(morning_alarm))
+
+            if encoder_button.press():
+                print("Encoder Button Pressed")
 
             elif morning_alarm.is_active():
                 print("Alarm is Active")
