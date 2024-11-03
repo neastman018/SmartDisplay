@@ -31,6 +31,11 @@ def default_button2(alarm) -> States:
     time.sleep(0.5)
     return 3
 
+def default_encoder_button(alarm) -> States:
+    alarm.play_alarm()
+    time.sleep(0.5)
+    return 3
+
 def default_alarm() -> States:
     time.sleep(0.5)
     return 3
@@ -48,6 +53,11 @@ def sleep_button2(alarm) -> States:
     time.sleep(0.5)
     return 3
 
+def sleep_encoder_button(alarm) -> States:
+    alarm.play_alarm()
+    time.sleep(0.5)
+    return 3
+
 def sleep_alarm() -> States:
     time.sleep(0.5)
     return 3
@@ -60,7 +70,7 @@ def alarm_button1(display) -> States:
     return 3
 
 def alarm_button2(alarm) -> States:
-    alarm.stop_alarm()
+    alarm.alarm_stop()
     time.sleep(0.5)
     return 0
 

@@ -30,6 +30,9 @@ state = States.DEFAULT
 morning_alarm = Alarm()
 morning_alarm.init("Peaky_Blinders.mp3")
 
+alarm2 = Alarm()
+alarm2.init("My_Way.mp3")
+
 
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
@@ -43,6 +46,7 @@ encoder_button.init_button()
 
 print("Running")
 log("Backend has started")
+
 
 
 while True:
@@ -62,6 +66,7 @@ while True:
 
             if encoder_button.press():
                 print("Encoder Button Pressed")
+                state = States(default_encoder_button(alarm2))
 
             elif morning_alarm.is_active():
                 print("Alarm is Active")
@@ -76,6 +81,10 @@ while True:
             if button2.press():
                 print("Button 2 Pressed: Music Turning On")
                 state = States(sleep_button2(morning_alarm))
+
+            if encoder_button.press():
+                print("Encoder Button Pressed")
+                state = States(sleep_encoder_button(alarm2))
             
             elif morning_alarm.is_active():
                 print("Alarm is Active")
