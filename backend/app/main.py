@@ -54,15 +54,15 @@ while True:
 
             if button1.press(): # display and leds turn off
                 print("Button 1 pressed: Display is turning off: state is SLEEP")
-                state = default_button1(display)
+                state = States(default_button1(display))
 
             if button2.press(): # play music
                 print("Button 2 Pressed: Music Turning On")
-                state = default_button2(morning_alarm)
+                state = States(default_button2(morning_alarm))
 
             elif morning_alarm.is_active():
                 print("Alarm is Active")
-                state = default_alarm()
+                state = States(default_alarm())
 
         # screen and leds are off       
         case States.SLEEP:
@@ -70,15 +70,15 @@ while True:
 
             if button1.press():
                 print("Button 1 pressed: Display is turning off: state is DEFAULT")
-                state = sleep_button1(display)
+                state = States(sleep_button1(display))
 
             if button2.press():
                 print("Button 2 Pressed: Music Turning On")
-                state = sleep_button2(morning_alarm)
+                state = States(sleep_button2(morning_alarm))
             
             elif morning_alarm.is_active():
                 print("Alarm is Active")
-                state = sleep_alarm()
+                state = States(sleep_alarm())
             
             
         case States.WAKE:
@@ -90,13 +90,13 @@ while True:
 
             if button1.press(display):
                 print("Button 1 pressed: Display is turning off: state is still ALARM")
-                state = alarm_button1()
+                state = States(alarm_button1())
             if button2.press():
                 print("Button 2 Pressed: Music Turning Off")
-                state = alarm_button2(morning_alarm)
+                state = States(alarm_button2(morning_alarm))
             elif not morning_alarm.is_active():
                 print("Alarm is not active: Switching to DEFAULT")
-                state = alarm_alarm_end()
+                state = States(alarm_alarm_end())
             
 
 
