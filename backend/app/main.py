@@ -45,12 +45,13 @@ log("Backend has started")
 
 while True:
     morning_alarm.wake_up(wake_up_times)
-    print(state)
 
     
     match state:
         # screen and leds on are on alarm is not playing
         case States.DEFAULT:
+            print(state)
+
             if button1.press(): # display and leds turn off
                 print("Button 1 pressed: Display is turning off: state is SLEEP")
                 state = default_button1(display)
@@ -65,6 +66,8 @@ while True:
 
         # screen and leds are off       
         case States.SLEEP:
+            print(state)
+
             if button1.press():
                 print("Button 1 pressed: Display is turning off: state is DEFAULT")
                 state = sleep_button1(display)
@@ -83,6 +86,8 @@ while True:
 
         # Alarm is playing    
         case States.ALARM:
+            print(state)
+
             if button1.press(display):
                 print("Button 1 pressed: Display is turning off: state is still ALARM")
                 state = alarm_button1()
