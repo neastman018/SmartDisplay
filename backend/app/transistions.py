@@ -6,7 +6,7 @@ from display.display import Display
 import RPi.GPIO as GPIO
 import time
 from datetime import datetime
-from subprocess import run``
+from subprocess import run
 from enum import Enum
 from logs.logs import log
 from alarm.alarm import Alarm
