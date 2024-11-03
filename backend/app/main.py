@@ -20,7 +20,7 @@ class States(Enum):
     WAKE = 2
     ALARM = 3
 
-wake_up_times = ["8:10", "6:15", "6:15", "6:15", "6:15", "6:15", "7:30"]    
+wake_up_times = ["8:20", "6:15", "6:15", "6:15", "6:15", "6:15", "7:30"]    
 
 
 display = Display()
@@ -82,9 +82,9 @@ while True:
 
         # Alarm is playing    
         case States.ALARM:
-            if button1.press(display):
+            if button1.press():
                 print("Button 1 pressed: Display is turning off: state is still ALARM")
-                state = States(alarm_button1())
+                state = States(alarm_button1(display))
             if button2.press():
                 print("Button 2 Pressed: Music Turning Of")
                 state = States(alarm_button2(morning_alarm))
