@@ -69,7 +69,7 @@ while True:
             print(state)
 
             if button1.press():
-                print("Button 1 pressed: Display is turning off: state is DEFAULT")
+                print("Button 1 pressed: Display is turning On: state is DEFAULT")
                 state = States(sleep_button1(display))
 
             if button2.press():
@@ -92,7 +92,7 @@ while True:
                 print("Button 1 pressed: Display is turning off: state is still ALARM")
                 state = States(alarm_button1())
             if button2.press():
-                print("Button 2 Pressed: Music Turning Off")
+                print("Button 2 Pressed: Music Turning Of")
                 state = States(alarm_button2(morning_alarm))
             elif not morning_alarm.is_active():
                 print("Alarm is not active: Switching to DEFAULT")
