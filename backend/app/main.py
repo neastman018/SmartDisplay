@@ -50,8 +50,6 @@ while True:
     match state:
         # screen and leds on are on alarm is not playing
         case States.DEFAULT:
-            print(state)
-
             if button1.press(): # display and leds turn off
                 print("Button 1 pressed: Display is turning off: state is SLEEP")
                 state = States(default_button1(display))
@@ -66,8 +64,6 @@ while True:
 
         # screen and leds are off       
         case States.SLEEP:
-            print(state)
-
             if button1.press():
                 print("Button 1 pressed: Display is turning On: state is DEFAULT")
                 state = States(sleep_button1(display))
@@ -86,8 +82,6 @@ while True:
 
         # Alarm is playing    
         case States.ALARM:
-            print(state)
-
             if button1.press(display):
                 print("Button 1 pressed: Display is turning off: state is still ALARM")
                 state = States(alarm_button1())
