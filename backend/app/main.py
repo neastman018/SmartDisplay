@@ -52,7 +52,7 @@ log("Running")
 log("Backend has started")
 
 while True:
-    playing_alarm = None
+    playing_alarm = alarm2 # keeps track of what alarm is being played, so we can manipulate the active one.
     morning_alarm.wake_up(wake_up_times)
 
     match state:
