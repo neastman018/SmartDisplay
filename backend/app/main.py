@@ -52,6 +52,7 @@ log("Running")
 log("Backend has started")
 
 while True:
+    playing_alarm = None
     morning_alarm.wake_up(wake_up_times)
 
     match state:
@@ -64,10 +65,12 @@ while True:
             if button2.press(): # play music
                 log("Button 2 Pressed: Music Turning On")
                 state = States(default_button2(morning_alarm))
+                playing_alarm = morning_alarm
 
             if encoder_button.press():
                 log("Encoder Button Pressed")
                 state = States(default_encoder_button(study_music))
+                playing_alarm = study_music
 
             elif morning_alarm.is_active():
                 log("Alarm is Active")
@@ -82,10 +85,12 @@ while True:
             if button2.press():
                 log("Button 2 Pressed: Music Turning On")
                 state = States(sleep_button2(morning_alarm))
+                playing_alarm = morning_alarm
 
             if encoder_button.press():
                 log("Encoder Button Pressed")
                 state = States(sleep_encoder_button(sleep_sounds))
+                playing_alarm = sleep_sounds
             
             elif morning_alarm.is_active():
                 log("Alarm is Active")
@@ -102,9 +107,10 @@ while True:
                 state = States(alarm_button1(display))
             if button2.press():
                 log("Button 2 Pressed: Music Turning Of")
-                state = States(alarm_button2(morning_alarm))
-            elif not morning_alarm.is_active():
-                log("Alarm is not active: Switching to DEFAULT")
-                state = States(alarm_alarm_end())
+                state = States(alarm_button2(playing_alarm))
+            
+            elif not playing_alarm.is_active():
+                log("Alarm Finished")
+                state = States(alarm_alarm_end(playing_alarm))
 
 

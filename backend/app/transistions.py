@@ -74,9 +74,10 @@ def alarm_button2(alarm) -> States:
     time.sleep(0.5)
     return 0
 
-def alarm_alarm_end() -> States:
+def alarm_alarm_end(alarm) -> States:  
+    alarm.play_alarm(alarm)
     time.sleep(0.5)
-    return 0
+    return 3
 
 #================================================================================================
 #================================================================================================
