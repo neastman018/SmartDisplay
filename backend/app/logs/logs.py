@@ -3,6 +3,7 @@ import glob
 from datetime import datetime
 
 def log(text):
+    print(text)
     # Get list of all txt files in the directory
     txt_files = glob.glob(os.path.join("./", "*.txt"))
     
@@ -17,7 +18,6 @@ def log(text):
     with open(latest_file, 'a') as f:
         f.write(text + '\n')
     
-    print(f"Text written to {latest_file}")
 
 
 def time_stamp() -> str:
