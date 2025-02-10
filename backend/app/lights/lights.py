@@ -109,7 +109,7 @@ class LEDs:
 
         time.sleep(1)
 
-        for i in range(self.num_pixels/2):
+        for i in range(int(self.num_pixels/2)):
             strip[i] = (0, 0, 0)
             strip[self.num_pixels - i - 1] = (0, 0, 0)
             if not self.auto_write:
