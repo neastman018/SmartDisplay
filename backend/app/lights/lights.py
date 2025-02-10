@@ -110,12 +110,18 @@ class LEDs:
         time.sleep(1)
 
         for i in range(int(self.num_pixels/2)):
-            strip[i] = (0, 0, 0)
-            strip[self.num_pixels - i - 1] = (0, 0, 0)
+            strip[int(self.num_pixels/2) - i] = (0, 0, 0)
+            strip[int(self.num_pixels/2) + i] = (0, 0, 0)
             if not self.auto_write:
                 strip.show()
 
             time.sleep(0.1)
+
+        time.sleep(1)
+        strip.fill(color)
+
+        if not self.auto_write:
+            strip.show()
 
 
 
