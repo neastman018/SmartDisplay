@@ -101,8 +101,8 @@ while True:
                 if SUDO:
                     leds.display_color(strip, 255, 255, 255)
                 else:
-                    morning_alarm.play_alarm()
-                    playing_alarm = morning_alarm
+                    study_music.play_alarm()
+                    playing_alarm = study_music
 
                 time.sleep(0.5)
                 state = 3
@@ -131,8 +131,8 @@ while True:
 
             if button2.press():
                 log("Button 2 Pressed: Music Turning On")
-                state = States(sleep_button2(morning_alarm))
-                playing_alarm = morning_alarm
+                state = States(sleep_button2(sleep_sounds))
+                playing_alarm = sleep_sounds
 
             if encoder_button.press():
                 log("Encoder Button Pressed")
