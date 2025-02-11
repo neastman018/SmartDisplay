@@ -10,6 +10,8 @@ from subprocess import run
 from enum import Enum
 from logs.logs import log
 from alarm.alarm import Alarm
+from lights.lights import LEDs
+
 
 
 class States(Enum):
@@ -18,10 +20,12 @@ class States(Enum):
     WAKE = 2
     ALARM = 3
 
+
 #================================================================================================
 #================================================================================================
 
 def default_button1(display) -> States:
+
     display.turn_off_display()
     time.sleep(0.5)
     return 1
