@@ -75,7 +75,8 @@ if os.geteuid() == 0: # Root User Returns 0
     leds.startup(strip, DEFAULT_COLOR)
     leds.startup(strip, (255, 255, 255))
 
-
+else:
+    time.sleep(5)
 
 while True:
     playing_alarm = alarm2 # keeps track of what alarm is being played, so we can manipulate the active one.

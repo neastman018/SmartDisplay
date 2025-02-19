@@ -5,7 +5,7 @@ from datetime import datetime
 def log(text):
     print(text)
     # Get list of all txt files in the directory
-    txt_files = glob.glob(os.path.join("./", "*.txt"))
+    txt_files = glob.glob(os.path.join("./logs", "*.txt"))
     
     if not txt_files:
         print("No txt files found in the directory. Creating file")
