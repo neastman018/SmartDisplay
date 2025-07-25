@@ -84,7 +84,6 @@ else:
 while True:
     playing_alarm = alarm2 # keeps track of what alarm is being played, so we can manipulate the active one.
     morning_alarm.wake_up()
-    print("Current State: ", state)
     match state:
         # screen and leds on are on alarm is not playing
         case 0:
@@ -123,7 +122,6 @@ while True:
 
         # screen and leds are off       
         case 1:
-            print("State is Sleep")
             print(button1.press())
             if button1.press():
                 log("Button 1 pressed: Display is turning On: state is DEFAULT")
