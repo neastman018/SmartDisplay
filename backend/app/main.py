@@ -28,7 +28,7 @@ NUM_PIXELS = 59
 DEFAULT_COLOR = (255, 255, 255)
 
 # Wake up time are defined
-wake_up_times = ["7:30", "6:15", "6:15", "6:15", "6:15", "6:15", "7:30"]    
+wake_up_times = ["7:30", "5:30", "5:30", "5:30", "5:30", "5:30", "7:30"]    
 
 # Initalize the Display
 display = Display()
