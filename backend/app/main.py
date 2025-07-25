@@ -74,6 +74,7 @@ strip = leds.init_leds()
 
 if os.geteuid() == 0: # Root User Returns 0
     SUDO = True
+    print("Running as SUDO")
     leds.startup(strip, DEFAULT_COLOR)
     leds.startup(strip, (255, 255, 255))
 
