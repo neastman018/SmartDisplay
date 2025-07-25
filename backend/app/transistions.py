@@ -13,72 +13,64 @@ from alarm.alarm import Alarm
 from lights.lights import LEDs
 
 
-
-class States(Enum):
-    DEFAULT = 0
-    SLEEP = 1
-    WAKE = 2
-    ALARM = 3
-
-
 #================================================================================================
 #================================================================================================
 
-def default_button1(display) -> States:
+def default_button1(display) -> int:
 
     display.turn_off_display()
     time.sleep(0.5)
     return 1
 
-def default_button2(alarm) -> States:
+def default_button2(alarm) -> int:
     alarm.play_alarm()
     time.sleep(0.5)
     return 3
 
-def default_encoder_button(alarm) -> States:
+def default_encoder_button(alarm) -> int:
     alarm.play_alarm()
     time.sleep(0.5)
     return 3
 
-def default_alarm() -> States:
+def default_alarm() -> int:
     time.sleep(0.5)
     return 3
 
 #================================================================================================
 #================================================================================================
 
-def sleep_button1(display) -> States:
+def sleep_button1(display) -> int:
     display.turn_on_display()
     time.sleep(0.5)
     return 0
 
-def sleep_button2(alarm) -> States:
+def sleep_button2(alarm) -> int:
     alarm.play_alarm()
     time.sleep(0.5)
     return 3
 
-def sleep_encoder_button(alarm) -> States:
+def sleep_encoder_button(alarm) -> int:
     alarm.play_alarm()
     time.sleep(0.5)
     return 3
 
-def sleep_alarm() -> States:
+def sleep_alarm() -> int:
     time.sleep(0.5)
     return 3
 
 #================================================================================================
 #================================================================================================
 
-def alarm_button1(display) -> States:
+def alarm_button1(display) -> int:
     display.turn_off_display()
     return 3
 
-def alarm_button2(alarm) -> States:
+def alarm_button2(alarm) -> int:
     alarm.alarm_stop()
     time.sleep(0.5)
     return 0
 
-def alarm_alarm_end(alarm) -> States:  
+def alarm_alarm_end(alarm) -> int:  
     alarm.play_alarm(alarm)
     time.sleep(0.5)
     return 3
