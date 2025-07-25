@@ -12,7 +12,6 @@ import os
 from lights.lights import LEDs
 
 
-
 # Define Button Pins
 PIN1= 6
 PIN2 = 5
@@ -35,7 +34,7 @@ wake_up_times = ["7:30", "6:15", "6:15", "6:15", "6:15", "6:15", "7:30"]
 display = Display()
 
 # Define the Inital State
-state = States.DEFAULT
+state = 0
 
 
 # Initalize the Alarms
@@ -81,10 +80,10 @@ else:
 while True:
     playing_alarm = alarm2 # keeps track of what alarm is being played, so we can manipulate the active one.
     morning_alarm.wake_up(wake_up_times)
-
+    print("Current State: ", state)
     match state:
         # screen and leds on are on alarm is not playing
-        case States.DEFAULT:
+        case 0:
             if button1.press(): # display and leds turn off
                 log("Button 1 pressed: Display is turning off: state is SLEEP")
                 if SUDO:
@@ -111,15 +110,17 @@ while True:
 
             if encoder_button.press():
                 log("Encoder Button Pressed")
-                state = States(default_encoder_button(study_music))
+                state = default_encoder_button(study_music)
                 playing_alarm = study_music
 
             elif morning_alarm.is_active():
                 log("Alarm is Active")
-                state = States(default_alarm())
+                state = default_alarm()
 
         # screen and leds are off       
-        case States.SLEEP:
+        case 1:
+            print("State is Sleep")
+            print(button1.press())
             if button1.press():
                 log("Button 1 pressed: Display is turning On: state is DEFAULT")
                 if SUDO:
@@ -132,27 +133,27 @@ while True:
 
             if button2.press():
                 log("Button 2 Pressed: Music Turning On")
-                state = States(sleep_button2(sleep_sounds))
+                state = sleep_button2(sleep_sounds)
                 playing_alarm = sleep_sounds
 
             if encoder_button.press():
                 log("Encoder Button Pressed")
-                state = States(sleep_encoder_button(sleep_sounds))
+                state = sleep_encoder_button(sleep_sounds)
                 playing_alarm = sleep_sounds
             
             elif morning_alarm.is_active():
                 log("Alarm is Active")
-                state = States(sleep_alarm())
+                state = sleep_alarm()
             
             
-        case States.WAKE:
+        case 2:
             log("Wake State")
 
         # Alarm is playing    
-        case States.ALARM:
+        case 3:
             if button1.press():
                 log("Button 1 pressed: Display is turning off: state is still ALARM")
-                state = States(alarm_button1(display))
+                state = alarm_button1(display)
             if button2.press():
                 log("Button 2 Pressed: Music Turning Of")
                 if SUDO:
@@ -165,6 +166,6 @@ while True:
                 
             elif not playing_alarm.is_active():
                 log("Alarm Finished")
-                state = States(alarm_alarm_end(playing_alarm))
+                state = alarm_alarm_end(playing_alarm)
 
 
