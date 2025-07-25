@@ -24,7 +24,7 @@ class States(Enum):
     WAKE = 2
     ALARM = 3
 
-NUM_PIXELS = 59
+NUM_PIXELS = 60
 DEFAULT_COLOR = (255, 255, 255)
 
 

@@ -99,7 +99,7 @@ class LEDs:
             strip.show()
 
     def startup(self, strip, color):
-        for i in range(self.num_pixels/2):
+        for i in range(int(self.num_pixels/2)):
             strip[i] = color
             strip[self.num_pixels - i - 1] = color
             if not self.auto_write:
