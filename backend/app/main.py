@@ -10,7 +10,7 @@ from alarm.alarm import Alarm
 from transistions import *
 import os
 from lights.lights import LEDs
-
+import json
 
 # Define Button Pins
 PIN1= 6
@@ -37,7 +37,12 @@ state = 0
 
 # Initalize the Alarms
 morning_alarm = Alarm()
-morning_alarm.init("Peaky_Blinders.mp3")
+
+with open('config.json', 'r') as config_file:
+            config = json.load(config_file)
+            alarm_sound = config.get('ALARM', {}).get('ALARM_SOUND', [])
+            print(f"Wake up time for today: {alarm_sound}")
+morning_alarm.init(alarm_sound)
 
 alarm2 = Alarm()
 alarm2.init("My_Way.mp3")
