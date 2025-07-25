@@ -27,8 +27,6 @@ class States(Enum):
 NUM_PIXELS = 59
 DEFAULT_COLOR = (255, 255, 255)
 
-# Wake up time are defined
-wake_up_times = ["7:30", "5:30", "5:30", "5:30", "5:30", "11:33", "7:30"]    
 
 # Initalize the Display
 display = Display()
@@ -79,7 +77,7 @@ else:
 
 while True:
     playing_alarm = alarm2 # keeps track of what alarm is being played, so we can manipulate the active one.
-    morning_alarm.wake_up(wake_up_times)
+    morning_alarm.wake_up()
     print("Current State: ", state)
     match state:
         # screen and leds on are on alarm is not playing

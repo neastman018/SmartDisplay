@@ -4,7 +4,18 @@ Methods for setting and activating an alarm
 
 import pygame
 from datetime import datetime
+from enum import Enum
+import json
 # from logs.logs import log
+
+class DayOfWeek(Enum):
+    MONDAY = 1
+    TUESDAY = 2
+    WEDNESDAY = 3
+    THURSDAY = 4
+    FRIDAY = 5
+    SATURDAY = 6
+    SUNDAY = 7
 
 class Alarm:
     def __init__(self, last_played_min=0, backup="Thats_Life.mp3"):
@@ -49,18 +60,37 @@ class Alarm:
             self.last_played_min = now.minute
             # log(f"Alarm played at {now.hour}:{now.minute}")
 
-    def wake_up(self, times):
-        # Get day of the week and adjust so Sunday is 0 and Saturday is 6
+    def wake_up(self) -> int:
+        wake_up_time = self.get_wake_up_time()
+        if not wake_up_time or wake_up_time is None:
+            print("No wake up time set for today.")
+            return 0
+        else:
+            wake_up_hour = int(wake_up_time.split(":")[0])
+            wake_up_minute = int(wake_up_time.split(":")[1])
+
+            self.activate(wake_up_hour, wake_up_minute)
+            return 1
+        
+        
+    def get_wake_up_time(self):
+        # Returns the wake up times for the current day of the week
         day_of_week = datetime.now().weekday() + 1
-        if day_of_week == 7:
-            day_of_week = 0
+        day_name = DayOfWeek(day_of_week).name
 
-        wake_up_time = times[day_of_week]
-        wake_up_hour = int(wake_up_time.split(":")[0])
-        wake_up_minute = int(wake_up_time.split(":")[1])
-
-        self.activate(wake_up_hour, wake_up_minute)
-
+        
+        wakeup_time = None
+        with open('config.json', 'r') as config_file:
+            config = json.load(config_file)
+            wakeup_time = config.get('ALARM', {}).get('WAKE_UP_TIMES', {}).get(str(day_name), [])
+            print(f"Wake up time for today: {str(day_name)}")
+        return wakeup_time
+    
+            
+        
+        
+    
+        
     def alarm_stop(self) -> bool:
         if self.is_active():
             pygame.mixer.music.stop()
