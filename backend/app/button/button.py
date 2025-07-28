@@ -35,7 +35,8 @@ class Button:
 
         if GPIO.input(self.pin) == GPIO.HIGH and (time.time() - self.last_press) >= self.debounce and not self.pressed:
             if (time.time() - self.last_triggered) >= self.hold and not self.triggered:
-                self.last_triggered = True
+                self.last_triggered = time.time()
+                self.triggered = True
                 print("Button Triggered")
             
             elif self.triggered:
