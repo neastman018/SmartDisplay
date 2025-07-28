@@ -83,7 +83,7 @@ class Alarm:
         with open('config.json', 'r') as config_file:
             config = json.load(config_file)
             wakeup_time = config.get('ALARM', {}).get('WAKE_UP_TIMES', {}).get(str(day_name), [])
-            print(f"Wake up time for today: {str(day_name)}")
+            # print(f"Wake up time for today: {str(day_name)}")
         return wakeup_time
     
             

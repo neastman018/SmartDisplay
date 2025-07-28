@@ -32,7 +32,6 @@ class Button:
     def press(self) -> bool:
         if time.time() - self.last_triggered > self.hold:
             self.triggered = False
-            print("Trigger Flag Cleared")
 
         if GPIO.input(self.pin) == GPIO.HIGH and (time.time() - self.last_press) >= self.debounce and not self.pressed:
             if (time.time() - self.last_triggered) >= self.hold and not self.triggered:
