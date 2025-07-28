@@ -54,7 +54,8 @@ def sleep_encoder_button(alarm) -> int:
     time.sleep(0.5)
     return 3
 
-def sleep_alarm() -> int:
+def sleep_alarm(display) -> int:
+    display.turn_on_display()
     time.sleep(0.5)
     return 2
 

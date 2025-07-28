@@ -45,7 +45,7 @@ with open('config.json', 'r') as config_file:
 morning_alarm.init(alarm_sound)
 
 alarm2 = Alarm()
-alarm2.init("My_Way.mp3")
+alarm2.init("Peaky_Blinders.mp3")
 study_music = Alarm()
 study_music.init("study_chants.mp3")
 sleep_sounds = Alarm()
@@ -145,7 +145,7 @@ while True:
             
             elif morning_alarm.is_active():
                 log("Alarm is Active")
-                state = sleep_alarm()
+                state = sleep_alarm(display)
             
             
         case 2:
