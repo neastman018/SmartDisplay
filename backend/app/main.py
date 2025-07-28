@@ -149,7 +149,6 @@ while True:
             
             
         case 2:
-            log("Wake State")
             if SUDO:
                 leds.display_color(strip, 255, 255, 255)
             
@@ -163,6 +162,10 @@ while True:
 
                 time.sleep(0.5)
                 state = 0
+                
+            elif not playing_alarm.is_active():
+                log("Alarm Finished")
+                state = alarm_alarm_end(playing_alarm)
 
         # Alarm is playing    
         case 3:
