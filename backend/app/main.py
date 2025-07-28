@@ -75,11 +75,12 @@ strip = leds.init_leds()
 if os.geteuid() == 0: # Root User Returns 0
     SUDO = True
     print("Running as SUDO")
+    time.sleep(10)  # Wait for the system to stabilize
     leds.startup(strip, DEFAULT_COLOR)
     leds.startup(strip, (255, 255, 255))
 
 else:
-    time.sleep(5)
+    SUDO = False
 
 while True:
     playing_alarm = alarm2 # keeps track of what alarm is being played, so we can manipulate the active one.
