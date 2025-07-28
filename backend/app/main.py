@@ -123,7 +123,6 @@ while True:
 
         # screen and leds are off       
         case 1:
-            print(button1.press())
             if button1.press():
                 log("Button 1 pressed: Display is turning On: state is DEFAULT")
                 if SUDO:
@@ -151,6 +150,19 @@ while True:
             
         case 2:
             log("Wake State")
+            if SUDO:
+                leds.display_color(strip, 255, 255, 255)
+            
+            if button1.press() or button2.press():
+                log("Button 1 or 2 pressed: Alarmis turning off: state is DEFAULT")
+                if SUDO:
+                    # Do Nothing for now
+                    continue
+                else:
+                    playing_alarm.alarm_stop()
+
+                time.sleep(0.5)
+                state = 0
 
         # Alarm is playing    
         case 3:
