@@ -2,13 +2,13 @@
     "ALARM": {
         "ALARM_SOUND": "Thats_Life.mp3",            
         "WAKE_UP_TIMES": {
-            "SUNDAY": "7:30",
-            "MONDAY": "11:35",
+            "SUNDAY": "7:00",
+            "MONDAY": "5:30",
             "TUESDAY": "5:30",
             "WEDNESDAY": "5:30",
             "THURSDAY": "5:30",
-            "FRIDAY": "14:25",
-            "SATURDAY": "11:30"
+            "FRIDAY": "5:30",
+            "SATURDAY": "7:00"
         }
     }
 
