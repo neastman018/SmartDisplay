@@ -84,6 +84,7 @@ else:
 while True:
     playing_alarm = alarm2 # keeps track of what alarm is being played, so we can manipulate the active one.
     morning_alarm.wake_up()
+    print("State: " + str(state))
     match state:
         # screen and leds on are on alarm is not playing
         case 0:
