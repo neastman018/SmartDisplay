@@ -5,7 +5,6 @@ import time
 from datetime import datetime
 from subprocess import run
 from enum import Enum
-from logs.logs import log
 from alarm.alarm import Alarm
 from transistions import *
 import os
@@ -63,8 +62,8 @@ button1.init_button()
 button2.init_button()
 encoder_button.init_button()
 
-log("Running")
-log("Backend has started")
+print("Running")
+print("Backend has started")
 
 # Check if the script is running as sudo
 SUDO = False
@@ -89,7 +88,7 @@ while True:
         # screen and leds on are on alarm is not playing
         case 0:
             if button1.press(): # display and leds turn off
-                log("Button 1 pressed: Display is turning off: state is SLEEP")
+                print(f"Button 1 pressed: Display is turning off: state is SLEEP ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')})")
                 if SUDO:
                     leds.off(strip)
                 else:
@@ -101,7 +100,7 @@ while True:
 
 
             if button2.press(): # play music
-                log("Button 2 Pressed: Music Turning On")
+                print(f"Button 2 Pressed: Music Turning On ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')})")
                 if SUDO:
                     leds.display_color(strip, 255, 255, 255)
                 else:
@@ -113,18 +112,18 @@ while True:
 
 
             if encoder_button.press():
-                log("Encoder Button Pressed")
+                print(f"Encoder Button Pressed ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')})")
                 state = default_encoder_button(study_music)
                 playing_alarm = study_music
 
             elif morning_alarm.is_active():
-                log("Alarm is Active")
+                print(f"Alarm is Active ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')})")
                 state = default_alarm()
 
         # screen and leds are off       
         case 1:
             if button1.press():
-                log("Button 1 pressed: Display is turning On: state is DEFAULT")
+                print(f"Button 1 pressed: Display is turning On: state is DEFAULT ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')})")
                 if SUDO:
                     leds.display_color(strip, 255, 255, 255)
                 else:
@@ -134,17 +133,17 @@ while True:
                 state = 0
 
             if button2.press():
-                log("Button 2 Pressed: Music Turning On")
+                print("Button 2 Pressed: Music Turning On")
                 state = sleep_button2(sleep_sounds)
                 playing_alarm = sleep_sounds
 
             if encoder_button.press():
-                log("Encoder Button Pressed")
+                print(f"Encoder Button Pressed ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')})")
                 state = sleep_encoder_button(sleep_sounds)
                 playing_alarm = sleep_sounds
             
             elif morning_alarm.is_active():
-                log("Alarm is Active")
+                print(f"Alarm is Active ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')})")
                 state = sleep_alarm(display)
             
             
@@ -153,7 +152,7 @@ while True:
                 leds.display_color(strip, 255, 255, 255)
             
             if button1.press() or button2.press():
-                log("Button 1 or 2 pressed: Alarmis turning off: state is DEFAULT")
+                print(f"Button 1 or 2 pressed: Alarm is turning off: state is DEFAULT ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')})")
                 if SUDO:
                     # Do Nothing for now
                     continue
@@ -164,16 +163,16 @@ while True:
                 state = 0
                 
             elif not playing_alarm.is_active():
-                log("Alarm Finished")
+                print(f"Alarm Finished ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')})")
                 state = alarm_alarm_end(playing_alarm)
 
         # Alarm is playing    
         case 3:
             if button1.press():
-                log("Button 1 pressed: Display is turning off: state is still ALARM")
+                print(f"Button 1 pressed: Display is turning off: state is still ALARM ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')})")
                 state = alarm_button1(display)
             if button2.press():
-                log("Button 2 Pressed: Music Turning Of")
+                print(f"Button 2 Pressed: Music Turning Off ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')})")
                 if SUDO:
                     leds.display_color(strip, 255, 255, 255)
                 else:
@@ -183,7 +182,7 @@ while True:
                 state = 0
                 
             elif not playing_alarm.is_active():
-                log("Alarm Finished")
+                print(f"Alarm Finished ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')})")
                 state = alarm_alarm_end(playing_alarm)
 
 

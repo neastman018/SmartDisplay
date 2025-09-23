@@ -40,12 +40,12 @@ class Alarm:
                 pygame.mixer.music.load(self.alarm_sound)
                 pygame.mixer.music.play()
             except Exception as e:
-                print(f"Error playing alarm: {e}")
+                print(f"Error playing alarm: {e} ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')})")
                 print(f"playing backup file")
                 pygame.mixer.music.load("backend/app/alarm/music/" + self.backup)
                 pygame.mixer.music.play()
         else:
-            print("Alarm sound not initialized.")
+            print(f"Alarm sound not initialized. ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')})")
             # log("Attempted to play alarm without initializing sound.")
 
     def activate(self, hour, minute) -> bool:
@@ -63,7 +63,7 @@ class Alarm:
     def wake_up(self) -> int:
         wake_up_time = self.get_wake_up_time()
         if not wake_up_time or wake_up_time is None:
-            print("No wake up time set for today.")
+            print(f"No wake up time set for today. ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')})")
             return 0
         else:
             wake_up_hour = int(wake_up_time.split(":")[0])
